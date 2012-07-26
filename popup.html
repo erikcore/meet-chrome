@@ -1,0 +1,208 @@
+<!doctype html>
+<html>
+	<head>
+		<title>MeetChrome</title>
+	<style>
+		body {
+			min-width:329px;
+			overflow-x:hidden;
+			background-color:#EDEFED;
+		}
+
+		.meetup {
+			padding:10px;
+			margin:10px;
+			background-color:#FFFFFF;
+			font-family: verdana, arial, sans-serif;
+			color: #555;
+			font-size: 10px;
+			font-weight: normal;
+			line-height: 16px;
+		}
+		.meetupTitle {
+			font-size: 13px;
+			font-weight: bold;
+			line-height: 17px;
+			margin: 0px;
+		}
+		a:link {
+			text-decoration: none;
+			color: #3987CB;
+		}
+		a:visited {
+			text-decoration: none;
+			color: #3987CB;
+		}
+		a:hover {
+			text-decoration: underline;
+		}
+		a:active {
+			text-decoration: underline;
+		}
+		#pageTop, #pageBottom {
+			margin: 10px;
+		}
+		.pageTopRed {
+			color: #E51937;
+			font-family: arial, sans-serif;
+			font-size: 22px;
+			font-weight: bold;
+		}
+		.pageTopGray {
+			color: #555;
+			font-family: arial, sans-serif;
+			font-size: 22px;
+			font-weight: bold;
+		}
+		.meetupDate {
+			margin: 0px;
+		}
+		.meetupBody {
+			float: left;
+			width: 225px;
+		}
+		.event_time {
+			color: #333;
+		}
+		.event_date {
+			color: #888;
+		}
+		.chapter_name {
+			color: #888;
+			margin: 0px;
+		}
+		.clear {
+			clear: both;
+		}
+		.fine_print {
+			font-size: 10px;
+			font-family: arial, sans-serif;
+		}
+
+		/* CSS Calendar lovingly borrowed from https://github.com/swilliams/CSS3-Calendar-Widget */
+		.calendar {
+			font-family: Helvetica, Arial;
+			float: left;
+			margin-right: 10px;
+			height: 54px;
+			width: 54px; 
+			font-size: 0.8em; 
+			-webkit-border-radius: 5px; 
+			-moz-border-radius: 5px; 
+			border-radius: 5px;
+			box-shadow: 0 0 5px #05587e; 
+			-moz-box-shadow: 0 0 5px #05587e; 
+			-webkit-box-shadow: 0 0 5px #05587e;
+		}	
+		.calendar > span { 
+			display: block; 
+		}	
+		.calendar > .month { 
+			text-align: right; 
+			padding: 2px 5px 2px 0; 
+			font-size: 10px; 
+			background: #6086a6; 
+			color: #fff; 
+			font-weight: bold;
+			-webkit-border-top-left-radius: 5px; 
+			-moz-border-radius-topleft: 5px;
+			-webkit-border-top-right-radius: 5px; 
+			-moz-border-radius-topright: 5px;
+			text-shadow: 0 1px #000;
+			background: -webkit-gradient(linear, left top, left bottom, from(#acc0d1), to(#6086a6));
+			background: -moz-linear-gradient(top, #acc0d1, #6086a6);
+		}	
+		.calendar > .day { 
+			color: #555;
+			height: 34px;
+			line-height: 32px;
+			text-align: center; 
+			font-weight: bold; 
+			font-size: 28px; 
+			background: #fff;
+			-webkit-border-bottom-left-radius:  5px;
+			-moz-border-radius-bottomleft:      5px;
+			-webkit-border-bottom-right-radius: 5px;
+			-moz-border-radius-bottomright:     5px;
+			background: -webkit-gradient(linear, left top, left bottom, from(#405b72), to(#e6e6e6), color-stop(.08,#f9f9f9));
+			background: -moz-linear-gradient(top, #f9f9f9, #e6e6e6);
+		}
+		#ajax_loader {
+			margin-left: auto;
+			margin-right: auto;
+			display: block;
+		}
+		#key_form {
+			margin-left: 10px;
+		}
+		input {
+			border-bottom-color: #DDD;
+			border-bottom-left-radius: 2px;
+			border-bottom-right-radius: 2px;
+			border-bottom-style: solid;
+			border-bottom-width: 1px;
+			border-left-color: #DDD;
+			border-left-style: solid;
+			border-left-width: 1px;
+			border-right-color: #DDD;
+			border-right-style: solid;
+			border-right-width: 1px;
+			border-top-color: #DDD;
+			border-top-left-radius: 2px;
+			border-top-right-radius: 2px;
+			border-top-style: solid;
+			border-top-width: 1px;
+			font-size: 12px;
+			color: #666;
+			padding: 4px;
+		}
+		input:focus {
+			border-bottom-color: #3987CB;
+			border-bottom-left-radius: 2px;
+			border-bottom-right-radius: 2px;
+			border-bottom-style: solid;
+			border-bottom-width: 1px;
+			border-left-color: #3987CB;
+			border-left-style: solid;
+			border-left-width: 1px;
+			border-right-color: #3987CB;
+			border-right-style: solid;
+			border-right-width: 1px;
+			border-top-color: #3987CB;
+			border-top-left-radius: 2px;
+			border-top-right-radius: 2px;
+			border-top-style: solid;
+			border-top-width: 1px;
+			outline: none;
+			box-shadow: rgba(0, 0, 0, 0.332031) 0px 1px 3px 0px inset, rgba(57, 135, 203, 0.496094) 0px 0px 6px 0px;
+		}
+		#api_key {
+			width: 250px;
+		}	
+		.load_more {
+			font-size: 12px;
+			font-family: arial, sans-serif;
+			font-weight: bold;
+		}
+		#load_more_mups {
+			text-align: center;
+		}
+	</style>
+
+    <!-- JavaScript and HTML must be in separate files for security. -->
+    
+  </head>
+	<body>
+		<div id='pageTop'>
+			<span class='pageTopGray'>Your Upcoming </span><span class='pageTopRed'>Meetups</span>
+		</div>
+		<div id='pageMeetups'><img src='ajax-loader.gif' id='ajax_loader' /></div>
+		<div id='pageBottom'>
+			<div id='load_more_mups'>			
+				<p class='load_more'><a href='#' id='more_link'>More</a></p>
+			</div>
+			<p class='fine_print'><a href='#' id='remove_key_link'>Remove API key</a></p>
+		</div>
+	</body>
+	<script src="popup.js"></script>
+</html>

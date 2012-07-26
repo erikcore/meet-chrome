@@ -1,0 +1,13 @@
+{
+	"name": "MeetChrome",
+	"version": "1.0",
+	"manifest_version": 1,
+	"description": "A simple, handy Chrome client for Meetup.",
+	"browser_action": {
+		"default_icon": "icon_active.png",
+		"default_popup": "popup.html"
+	},
+	"permissions": [
+		"http://api.meetup.com/"
+	]
+}
