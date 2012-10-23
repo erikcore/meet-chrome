@@ -1,7 +1,7 @@
 {
 	"name": "MeetChrome",
 	"version": "1.0",
-	"manifest_version": 1,
+	"manifest_version": 2,
 	"description": "A simple, handy Chrome client for Meetup.",
 	"browser_action": {
 		"default_icon": "icon_active.png",
