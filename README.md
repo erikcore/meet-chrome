@@ -4,7 +4,7 @@ A simple Meetup client for Chrome.
 
 # Install
 
-	[Install for free in the Chrome Store](https://chrome.google.com/webstore/detail/meetchrome/oalenjmkgbjnlmljnkpjooikjlphmhap)
+	Install for free in the Chrome Store - https://chrome.google.com/webstore/detail/meetchrome/oalenjmkgbjnlmljnkpjooikjlphmhap
 	
 	- or -
 
